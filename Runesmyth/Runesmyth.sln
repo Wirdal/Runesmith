@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Runesmyth", "Runesmyth.csproj", "{778451C2-245C-49DD-94DA-28E9A6BA3E0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0B49DACB-2F56-496B-A355-5BABB335F9A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreathingTest", "..\BreathingTest\BreathingTest.csproj", "{04A6DD8F-6376-48FC-971C-718E8DFE97E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{778451C2-245C-49DD-94DA-28E9A6BA3E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{778451C2-245C-49DD-94DA-28E9A6BA3E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{778451C2-245C-49DD-94DA-28E9A6BA3E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{778451C2-245C-49DD-94DA-28E9A6BA3E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A6DD8F-6376-48FC-971C-718E8DFE97E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A6DD8F-6376-48FC-971C-718E8DFE97E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A6DD8F-6376-48FC-971C-718E8DFE97E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A6DD8F-6376-48FC-971C-718E8DFE97E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04A6DD8F-6376-48FC-971C-718E8DFE97E6} = {0B49DACB-2F56-496B-A355-5BABB335F9A2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B97A0CD-375D-489F-B3CA-3E78386FC11E}
+	EndGlobalSection
+EndGlobal
