@@ -6,30 +6,26 @@ using Microsoft.Xna.Framework.Input;
 
 public class BreathingTest : Game
 {
-    public static GraphicsDeviceManager s_graphics;
-    public static SpriteBatch s_spriteBatch;
-    public static ContentManager s_contentManager;
-
     static Unit tempUnit;
 
     public BreathingTest()
     {
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
-        s_graphics = new GraphicsDeviceManager(this);
-        s_contentManager = Content;
+        GameManagers.s_contentManager = Content;
+        GameManagers.s_graphics = new GraphicsDeviceManager(this);
     }
 
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-
+        base.Initialize();
+        // Sprite batch can only be initalized after graphics device, which is from base initilization 
+        GameManagers.s_spriteBatch = new SpriteBatch(GameManagers.s_graphics.GraphicsDevice);
         tempUnit = new Unit(64, 64, "");
         tempUnit.Visible = true;
-        tempUnit.m_texture = s_contentManager.Load<Texture2D>("Sprites\\player\\base\\octopode_1");
-        s_spriteBatch = new SpriteBatch(s_graphics.GraphicsDevice);
-        tempUnit.m_spriteBatch = s_spriteBatch;
-        base.Initialize();
+        tempUnit.m_texture = GameManagers.s_contentManager.Load<Texture2D>("Sprites\\player\\base\\octopode_1");
+        tempUnit.m_spriteBatch = GameManagers.s_spriteBatch;
     }
 
     protected override void LoadContent()
@@ -50,10 +46,10 @@ public class BreathingTest : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        s_graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
-        s_spriteBatch.Begin();
+        GameManagers.s_graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+        GameManagers.s_spriteBatch.Begin();
         Unit.DrawUnits(gameTime);
-        s_spriteBatch.End();
+        GameManagers.s_spriteBatch.End();
         // TODO: Add your drawing code here
 
         base.Draw(gameTime);
