@@ -5,6 +5,7 @@
     <RollForward>Major</RollForward>
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -21,10 +22,12 @@
     <None Remove="Content\Sprites**" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Bezier" Version="0.9.4" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Source\World\" />
     <Folder Include="Source\Serialization\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">

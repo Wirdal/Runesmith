@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 class Tile : Sprite
 {
-    // Coordinate system
-    (int, int) m_coordinate;
+	// Coordinate system
+	(int, int) m_coordinate;
 
-    bool m_occupied;
-    Unit m_occupyingUnit;
+	bool m_occupied;
+	Unit m_occupyingUnit;
 }

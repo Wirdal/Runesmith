@@ -3,33 +3,36 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-public class Unit : Sprite
+public class Unit
 {
-    // X,Y pos (in game)
-    (int, int)  m_position;
+	// X,Y pos (in game)
+	(int, int) m_position;
 
-    // Game properties
-    UnitProperties m_properties;
+	// Game properties
+	UnitProperties m_properties;
 
-    // static containers
-    static List<Unit> s_units   = new List<Unit>(Constants.MAX_UNITS);
-    static Unit s_playerUnit    = null;
+	// static containers
+	static List<Unit> s_units = new List<Unit>(Constants.MAX_UNITS);
+	static Unit? s_playerUnit = null;
+	
+	Sprite? m_sprite;
 
-    public Unit(int width, int height, string textureName) : base(width, height, textureName) // Might have to defaualt here on texture name
-    {
-         s_units.Add(this);
-    }
+	public Unit() // Might have to defaualt here on texture name
+	{
+		s_units.Add(this);
+		m_properties = new UnitProperties();
+	}
 
-    ~Unit()
-    {
-        s_units.Remove(this);
-    }
+	~Unit()
+	{
+		s_units.Remove(this);
+	}
 
-    public static void DrawUnits(GameTime gameTime)
-    {
-        foreach (var unit in s_units)
-        {
-            unit.Draw(gameTime);
-        }
-    }
+	public static void DrawUnits(GameTime gameTime)
+	{
+		foreach (var unit in s_units)
+		{
+			unit.Draw(gameTime);
+		}
+	}
 }

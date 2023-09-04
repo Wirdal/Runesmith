@@ -7,73 +7,51 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-
-abstract public class Sprite : IDrawable
+public class Sprite : IDrawable
 {
-    // Actual sprite texutre
-    public Texture2D m_texture;
+	// Actual sprite texutre
+	public Texture2D m_texture;
+	//Basic
+	protected int m_height;
+	protected int m_width;
+	protected int m_rotation;
+	protected Vector2 m_scale = new Vector2(1, 1);
+	protected SpriteEffects m_effects;
 
-    //Basic
-    int m_height;
-    int m_width;
-    int m_rotation;
-    int m_scale;
+	// Location on the screen
+	protected Vector2 m_coordinates = new Vector2(300, 300);
+	public int DrawOrder { get; set; } = -1;
+	public bool Visible { get; set; } = false;
+	public SpriteBatch m_spriteBatch { get; set; } = null;
 
-    // Location on the screen
-    Vector2 m_coordinates = new Vector2(0,0);
+	protected Sprite()
+	{
+		Visible = false;
+	}
 
-    // Breathing
-    bool m_breathingEnabled;
-    int m_deltaX;
-    int m_deltaY;
-    int m_maxBreathX;
-    int m_maxBreathY;
-    bool m_risingX;
-    bool m_risingY;
+	protected Sprite(int width, int height, string textureName)
+	{
+		m_width = width;
+		m_height = height;
+		//m_texture = Runesmyth.s_contentManager.Load<Texture2D>(textureName);
+	}
 
-    protected Sprite()
-    {
-        Visible = false;
-    }
+	// IDrawable
+	public event EventHandler<EventArgs> DrawOrderChanged;
+	public event EventHandler<EventArgs> VisibleChanged;
+	public void Draw(GameTime gameTime)
+	{
+		DrawInternal(gameTime);
+	}
 
-    protected Sprite(int width, int height, string textureName)
-    {
-        m_breathingEnabled = false;
-        m_width = width;
-        m_height = height;
-        //m_texture = Runesmyth.s_contentManager.Load<Texture2D>(textureName);
-    }
+	protected void DrawInternal(GameTime gameTime)
+	{
+		m_spriteBatch.Draw(m_texture, m_coordinates, Color.White);
+	}
 
-    // IDrawable
-    public event EventHandler<EventArgs> DrawOrderChanged;
-    public event EventHandler<EventArgs> VisibleChanged;
-
-    public int DrawOrder { get; set; } = -1;
-
-    public bool Visible { get; set; } = false;
-
-    public SpriteBatch m_spriteBatch { get; set; } = null;
-
-    public void Draw(GameTime gameTime)
-    {
-        if (m_breathingEnabled)
-        {
-            DrawInternalBreathing(gameTime);
-        } 
-        else
-        {
-            DrawInternal(gameTime);
-        }
-    }
-
-    // Wrapper for breathing. Stretches sprite and calls draw Internal
-    private void DrawInternalBreathing(GameTime gameTime)
-    {
-
-    }
-
-    private void DrawInternal(GameTime gameTime)
-    {
-        m_spriteBatch.Draw(m_texture, m_coordinates, Color.White);
-    }
+	public void Scale(int scale)
+	{
+		m_width *= scale;
+		m_height *= scale;
+	}
 }
