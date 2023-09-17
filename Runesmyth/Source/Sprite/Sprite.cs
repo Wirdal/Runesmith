@@ -24,12 +24,12 @@ public class Sprite : IDrawable
 	public bool Visible { get; set; } = false;
 	public SpriteBatch m_spriteBatch { get; set; } = null;
 
-	protected Sprite()
+	public Sprite()
 	{
 		Visible = false;
 	}
 
-	protected Sprite(int width, int height, string textureName)
+	protected Sprite(int width, int height)
 	{
 		m_width = width;
 		m_height = height;
@@ -39,7 +39,7 @@ public class Sprite : IDrawable
 	// IDrawable
 	public event EventHandler<EventArgs> DrawOrderChanged;
 	public event EventHandler<EventArgs> VisibleChanged;
-	public void Draw(GameTime gameTime)
+	public virtual void Draw(GameTime gameTime)
 	{
 		DrawInternal(gameTime);
 	}

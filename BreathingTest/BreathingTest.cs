@@ -22,10 +22,8 @@ public class BreathingTest : Game
         base.Initialize();
         // Sprite batch can only be initalized after graphics device, which is from base initilization 
         GameManagers.s_spriteBatch = new SpriteBatch(GameManagers.s_graphics.GraphicsDevice);
-        tempUnit = new Unit(64, 64, "");
-        tempUnit.Visible = true;
-        tempUnit.m_texture = GameManagers.s_contentManager.Load<Texture2D>("Sprites\\player\\base\\octopode_1");
-        tempUnit.m_spriteBatch = GameManagers.s_spriteBatch;
+        tempUnit = new Unit();
+        tempUnit.InitializeSprite(GameManagers.s_spriteBatch, GameManagers.s_contentManager.Load<Texture2D>("Sprites\\player\\base\\octopode_1"));
     }
 
     protected override void LoadContent()

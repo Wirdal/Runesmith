@@ -22,7 +22,7 @@ public class BreathingSprite : Sprite
 	private List<float> _points = new List<float>(_breathTime);
 	private Boolean _rising = false;
 
-	public BreathingSprite(int width, int height, string textureName) : base(width, height, textureName)
+	public BreathingSprite(int width, int height) : base(width, height)
 	{
 		// Create a curve based on our dimensions
 		// For a start, lets only compress to a 75%  of our height
@@ -48,7 +48,7 @@ public class BreathingSprite : Sprite
 		// We're also going to start them off in a random spot in the curve, then follow through the rest of the curve
 	}
 
-	new public void Draw(GameTime gameTime)
+	public override void Draw(GameTime gameTime)
 	{
 		// We need to stretch or compress our texture based on our curve
 		Vector2 point = m_curve.Position(_points[_lastTangent]);
